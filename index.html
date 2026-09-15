@@ -12,16 +12,20 @@
     <title>임희주 ❤️ 이수빈</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Gowun+Batang:wght@400;700&family=Noto+Serif+KR:wght@200;300;400;500&display=swap" rel="stylesheet">
     <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.2/kakao.min.js"></script>
     <style>
         :root {
-            --primary: #2C3333;
-            --secondary: #A5A5A5;
-            --accent: #8B7355;
-            --light: #F8F6F4;
-            --white: #FFFFFF;
-            --divider: #E8E8E8;
+            --primary: #2E2A26;
+            --secondary: #9C9289;
+            --accent: #A08963;
+            /* 한 페이지처럼 이어지도록 모든 섹션이 같은 배경색을 쓴다 */
+            --bg: #FBF8F4;
+            --light: #FBF8F4;
+            --white: #FBF8F4;
+            --divider: #E7E0D6;
+            --font-serif: 'Cormorant Garamond', 'Gowun Batang', 'Noto Serif KR', serif;
+            --font-body: 'Gowun Batang', 'Noto Serif KR', serif;
         }
 
         * {
@@ -31,62 +35,69 @@
         }
 
         body {
-            font-family: 'Noto Sans KR', sans-serif;
-            background: var(--light);
+            font-family: var(--font-body);
+            background: var(--bg);
             color: var(--primary);
-            line-height: 1.6;
+            line-height: 1.9;
+            letter-spacing: 0.02em;
             -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         .container {
             max-width: 480px;
             margin: 0 auto;
-            background: var(--white);
+            background: var(--bg);
             min-height: 100vh;
         }
 
         .header {
-            padding: 80px 40px 60px;
+            padding: 90px 40px 60px;
             text-align: center;
-            background: var(--white);
+            background: transparent;
         }
 
         .header-date {
-            font-family: 'Noto Serif KR', serif;
-            font-size: 0.9rem;
+            font-family: var(--font-serif);
+            font-size: 1rem;
             color: var(--secondary);
-            letter-spacing: 2px;
-            margin-bottom: 30px;
-            font-weight: 300;
+            letter-spacing: 0.32em;
+            text-indent: 0.32em;
+            margin-bottom: 34px;
+            font-weight: 400;
         }
 
         .header-names {
-            font-family: 'Noto Serif KR', serif;
-            font-size: 2rem;
+            font-family: var(--font-serif);
+            font-size: 2.3rem;
             font-weight: 400;
             color: var(--primary);
             margin-bottom: 20px;
-            letter-spacing: 1px;
+            letter-spacing: 0.08em;
+            line-height: 1.5;
         }
 
         .header-names .divider {
-            margin: 0 15px;
+            margin: 0 18px;
             color: var(--accent);
             font-weight: 300;
+            font-size: 0.72em;
+            vertical-align: 0.18em;
         }
 
         .header-message {
             font-size: 0.95rem;
             color: var(--secondary);
-            line-height: 1.8;
-            font-weight: 300;
+            line-height: 2.1;
+            font-weight: 400;
+            letter-spacing: 0.04em;
             margin-top: 40px;
         }
 
         .main-image {
             width: 100%;
             height: 500px;
-            background: linear-gradient(135deg, #F5F5F5 0%, #E8E8E8 100%);
+            background: linear-gradient(135deg, #F3EEE7 0%, #E7E0D6 100%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -103,47 +114,59 @@
         }
 
         .invitation-message {
-            padding: 60px 40px;
+            padding: 70px 40px;
             text-align: center;
-            background: var(--white);
+            background: transparent;
         }
 
         .invitation-title {
-            font-family: 'Noto Serif KR', serif;
-            font-size: 1.1rem;
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
             font-weight: 400;
             color: var(--primary);
-            margin-bottom: 30px;
-            letter-spacing: 1px;
+            margin-bottom: 32px;
+            letter-spacing: 0.3em;
+            text-indent: 0.3em;
         }
 
         .invitation-text {
             font-size: 0.95rem;
             color: var(--secondary);
-            line-height: 2;
-            font-weight: 300;
+            line-height: 2.2;
+            font-weight: 400;
+            letter-spacing: 0.03em;
         }
 
         .divider-line {
             width: 1px;
-            height: 40px;
-            background: var(--divider);
+            height: 56px;
+            background: linear-gradient(to bottom, transparent, var(--divider) 30%, var(--divider) 70%, transparent);
             margin: 0 auto;
         }
 
         .info-section {
-            padding: 60px 40px;
-            background: var(--white);
+            padding: 70px 40px;
+            background: transparent;
         }
 
         .section-title {
-            font-family: 'Noto Serif KR', serif;
-            font-size: 1rem;
-            font-weight: 500;
-            color: var(--primary);
+            font-family: var(--font-serif);
+            font-size: 1.05rem;
+            font-weight: 400;
+            color: var(--accent);
             text-align: center;
-            margin-bottom: 40px;
-            letter-spacing: 2px;
+            margin-bottom: 44px;
+            letter-spacing: 0.34em;
+            text-indent: 0.34em;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 26px;
+            height: 1px;
+            background: var(--divider);
+            margin: 18px auto 0;
         }
 
         .info-grid {
@@ -169,17 +192,20 @@
             font-size: 0.85rem;
             color: var(--secondary);
             font-weight: 400;
+            letter-spacing: 0.1em;
         }
 
         .info-value {
             font-size: 0.9rem;
             color: var(--primary);
             font-weight: 400;
+            line-height: 1.9;
+            letter-spacing: 0.02em;
         }
 
         .map-section {
-            padding: 60px 40px;
-            background: var(--light);
+            padding: 70px 40px;
+            background: transparent;
         }
 
         /* 지도 아이콘 */
@@ -205,22 +231,24 @@
             object-fit: contain;
             cursor: pointer;
             transition: all 0.3s ease;
-            border-radius: 8px;
+            border-radius: 10px;
             padding: 8px;
-            background: white;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            margin-bottom: 8px;
+            background: #FFFFFF;
+            border: 1px solid var(--divider);
+            box-shadow: none;
+            margin-bottom: 10px;
         }
 
         .map-icon:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 14px rgba(46, 42, 38, 0.10);
         }
 
         .map-label {
-            font-size: 0.8rem;
-            color: var(--primary);
+            font-size: 0.78rem;
+            color: var(--secondary);
             font-weight: 400;
+            letter-spacing: 0.06em;
             text-align: center;
         }
 
@@ -237,71 +265,117 @@
             }
         }
 
-        /* 교통 정보 */
+        /* 교통 정보 - 탭 (지하철 | 버스 | 자가용) */
         .transport-info {
-            margin-top: 40px;
-            background: var(--white);
-            border-radius: 8px;
-            padding: 25px;
+            margin-top: 44px;
+            background: transparent;
+            padding: 0;
         }
 
-        .transport-item {
-            padding: 20px 0;
+        .transport-tabs {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-bottom: 18px;
             border-bottom: 1px solid var(--divider);
         }
 
-        .transport-item:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
+        .transport-tab {
+            background: none;
+            border: none;
+            padding: 6px 20px;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            font-weight: 400;
+            letter-spacing: 0.14em;
+            color: var(--secondary);
+            cursor: pointer;
+            transition: color 0.3s ease;
         }
 
-        .transport-title {
-            display: flex;
-            align-items: center;
-            font-size: 1rem;
-            font-weight: 500;
+        .transport-tab:hover {
             color: var(--primary);
-            margin-bottom: 15px;
         }
 
-        .transport-icon {
-            font-size: 1.3rem;
-            margin-right: 10px;
+        .transport-tab.active {
+            color: var(--primary);
+            font-weight: 700;
         }
 
-        .transport-details {
-            padding-left: 35px;
+        .transport-tab-sep {
+            color: var(--divider);
+            font-size: 0.9rem;
+            user-select: none;
+        }
+
+        .transport-panel {
+            display: none;
+            padding: 28px 4px 0;
+        }
+
+        .transport-panel.active {
+            display: block;
+            animation: transport-fade 0.4s ease;
+        }
+
+        @keyframes transport-fade {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .transport-line {
             font-size: 0.9rem;
             color: var(--primary);
-            line-height: 1.8;
+            line-height: 1.9;
             display: flex;
             align-items: flex-start;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
+            letter-spacing: 0.02em;
         }
 
         .transport-line::before {
-            content: "•";
+            content: "·";
             color: var(--accent);
-            margin-right: 8px;
+            margin-right: 10px;
             flex-shrink: 0;
         }
 
+        .transport-line.no-bullet::before {
+            content: none;
+        }
+
+        .transport-line.heading {
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .transport-line.sub {
+            font-size: 0.85rem;
+            color: var(--secondary);
+            margin-bottom: 12px;
+        }
+
+        .transport-tag {
+            display: inline-block;
+            min-width: 54px;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
         @media (max-width: 480px) {
-            .transport-details {
-                padding-left: 20px;
+            .transport-tab {
+                padding: 6px 13px;
+                font-size: 0.9rem;
             }
-            
+
             .transport-line {
                 font-size: 0.85rem;
             }
         }
 
         .gallery-section {
-            padding: 60px 40px;
-            background: var(--white);
+            padding: 70px 40px;
+            background: transparent;
         }
 
         .gallery-grid {
@@ -313,7 +387,7 @@
 
         .gallery-item {
             aspect-ratio: 1;
-            background: #F5F5F5;
+            background: #F1ECE4;
             overflow: hidden;
             cursor: pointer;
             transition: opacity 0.3s;
@@ -351,11 +425,12 @@
             background: transparent;
             border: 1px solid var(--divider);
             color: var(--secondary);
-            padding: 10px 24px;
+            padding: 11px 26px;
             font-size: 0.8rem;
+            letter-spacing: 0.1em;
             cursor: pointer;
             transition: all 0.3s;
-            font-family: 'Noto Sans KR', sans-serif;
+            font-family: var(--font-body);
             border-radius: 2px;
         }
 
@@ -367,23 +442,24 @@
 
         /* 계좌 정보 섹션 */
         .account-section {
-            padding: 60px 40px;
-            background: var(--light);
+            padding: 70px 40px;
+            background: transparent;
         }
 
         .account-notice {
-            margin-top: 12px;
+            margin-top: -24px;
             margin-bottom: 0;
             text-align: center;
-            font-size: 13px;
-            color: #999;
-            line-height: 1.7;
+            font-size: 0.82rem;
+            color: var(--secondary);
+            line-height: 1.9;
+            letter-spacing: 0.02em;
         }
 
         .account-grid {
             display: grid;
-            gap: 15px;
-            margin-top: 30px;
+            gap: 0;
+            margin-top: 34px;
             max-width: 400px;
             margin-left: auto;
             margin-right: auto;
@@ -391,10 +467,13 @@
 
         /* 토글 박스 */
         .account-toggle-box {
-            background: var(--white);
-            border-radius: 8px;
+            background: transparent;
+            border-top: 1px solid var(--divider);
             overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .account-toggle-box:last-child {
+            border-bottom: 1px solid var(--divider);
         }
 
         .account-toggle-header {
@@ -407,18 +486,21 @@
             user-select: none;
         }
 
-        .account-toggle-header:hover {
-            background: var(--light);
+        .account-toggle-header:hover .account-toggle-title {
+            color: var(--accent);
         }
 
         .account-toggle-title {
-            font-size: 1rem;
-            font-weight: 500;
+            font-size: 0.95rem;
+            font-weight: 400;
+            letter-spacing: 0.08em;
             color: var(--primary);
+            transition: color 0.3s;
         }
 
         .account-toggle-arrow {
-            font-size: 1.2rem;
+            font-size: 1rem;
+            line-height: 1;
             color: var(--secondary);
             transition: transform 0.3s;
         }
@@ -455,7 +537,8 @@
         .account-owner {
             font-size: 0.85rem;
             color: var(--secondary);
-            margin-bottom: 10px;
+            letter-spacing: 0.06em;
+            margin-bottom: 8px;
         }
 
         .account-info-row {
@@ -475,11 +558,12 @@
             background: transparent;
             border: 1px solid var(--divider);
             color: var(--secondary);
-            padding: 6px 12px;
+            padding: 6px 13px;
             font-size: 0.7rem;
+            letter-spacing: 0.08em;
             cursor: pointer;
             transition: all 0.3s;
-            font-family: 'Noto Sans KR', sans-serif;
+            font-family: var(--font-body);
             border-radius: 2px;
             white-space: nowrap;
         }
@@ -491,22 +575,22 @@
         }
 
         .share-section {
-            padding: 40px;
+            padding: 60px 40px 40px;
             text-align: center;
-            background: var(--white);
+            background: transparent;
         }
 
         .share-btn {
             background: var(--primary);
             color: var(--white);
             border: none;
-            padding: 16px 40px;
-            font-size: 0.9rem;
+            padding: 16px 38px;
+            font-size: 0.88rem;
             cursor: pointer;
             transition: all 0.3s;
-            font-family: 'Noto Sans KR', sans-serif;
+            font-family: var(--font-body);
             font-weight: 400;
-            letter-spacing: 1px;
+            letter-spacing: 0.12em;
             border-radius: 2px;
             margin: 0 5px;
         }
@@ -525,16 +609,18 @@
         }
 
         .footer {
-            padding: 50px 40px;
+            padding: 30px 40px 70px;
             text-align: center;
-            background: var(--primary);
-            color: var(--white);
+            background: transparent;
+            color: var(--secondary);
         }
 
         .footer-text {
-            font-size: 0.85rem;
-            font-weight: 300;
-            opacity: 0.8;
+            font-family: var(--font-serif);
+            font-size: 0.8rem;
+            font-weight: 400;
+            letter-spacing: 0.18em;
+            opacity: 0.75;
         }
 
         .toast {
@@ -546,7 +632,8 @@
             color: var(--white);
             padding: 16px 30px;
             border-radius: 2px;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
+            letter-spacing: 0.04em;
             opacity: 0;
             transition: all 0.3s;
             z-index: 1000;
@@ -561,18 +648,23 @@
 
         @media (max-width: 480px) {
             .header {
-                padding: 60px 30px 50px;
+                padding: 70px 26px 50px;
             }
 
             .header-names {
-                font-size: 1.7rem;
+                font-size: 1.95rem;
             }
 
+            .invitation-message,
             .info-section,
             .map-section,
             .gallery-section,
             .account-section {
-                padding: 50px 30px;
+                padding: 56px 26px;
+            }
+
+            .share-section {
+                padding: 50px 26px 36px;
             }
 
             .share-btn {
@@ -602,21 +694,22 @@
         }
         /* 달력 섹션 */
         .calendar-box {
-            margin-top: 40px;
-            padding: 25px 20px;
-            background: var(--light);
-            border-radius: 10px;
+            margin-top: 44px;
+            padding: 0;
+            background: transparent;
             max-width: 380px;
             margin-left: auto;
             margin-right: auto;
         }
 
         .calendar-title {
-            font-family: 'Noto Serif KR', serif;
-            font-size: 1.1rem;
-            font-weight: 500;
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            font-weight: 400;
+            line-height: 1.8;
+            letter-spacing: 0.08em;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 28px;
             color: var(--primary);
         }
 
@@ -655,9 +748,9 @@
 
         .calendar-day.selected {
             background: var(--accent);
-            color: white;
+            color: #FFFFFF;
             font-weight: 700;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            box-shadow: none;
         }
 
         .calendar-day.empty {
@@ -666,7 +759,7 @@
         /* 모바일에서 자동 축소 */
         @media (max-width: 480px) {
             .calendar-box {
-                padding: 20px 15px;
+                padding: 0;
             }
 
             .calendar-weekdays,
@@ -686,11 +779,11 @@
         }
         /* 디데이 박스 */
         .dday-box {
-            margin-top: 35px;
-            margin-bottom: 25px;
-            padding: 25px 20px;
-            background: var(--light);
-            border-radius: 10px;
+            margin-top: 40px;
+            margin-bottom: 30px;
+            padding: 32px 0 0;
+            background: transparent;
+            border-top: 1px solid var(--divider);
             text-align: center;
             max-width: 380px;
             margin-left: auto;
@@ -709,15 +802,18 @@
         }
 
         .dday-label {
+            font-family: var(--font-serif);
             font-size: 0.75rem;
             color: var(--secondary);
-            letter-spacing: 1px;
-            margin-bottom: 6px;
+            letter-spacing: 0.2em;
+            text-indent: 0.2em;
+            margin-bottom: 8px;
         }
 
         .dday-value {
-            font-size: 1.3rem;
-            font-weight: 700;
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            font-weight: 500;
             color: var(--primary);
         }
 
@@ -725,6 +821,7 @@
             font-size: 0.9rem;
             color: var(--primary);
             font-weight: 400;
+            letter-spacing: 0.02em;
         }
 
         .dday-message strong {
@@ -800,8 +897,8 @@
             width: 46px;
             height: 46px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            background: rgba(251, 248, 244, 0.92);
+            box-shadow: 0 2px 10px rgba(46, 42, 38, 0.12);
             border: none;
             display: flex;
             align-items: center;
@@ -826,8 +923,8 @@
         }
 
         @keyframes bgm-pulse {
-            0%, 100% { box-shadow: 0 2px 10px rgba(0,0,0,0.15); }
-            50% { box-shadow: 0 2px 10px rgba(139,115,85,0.4); }
+            0%, 100% { box-shadow: 0 2px 10px rgba(46, 42, 38, 0.12); }
+            50% { box-shadow: 0 2px 10px rgba(160, 137, 99, 0.45); }
         }
 
         @media (max-width: 480px) {
@@ -900,7 +997,7 @@
         <div class="info-section scroll-reveal">
             <div class="section-title">WEDDING DAY</div>
             <div class="calendar-box">
-            <div class="calendar-title">2026년 11월 7일 토요일 <br> 오후 12시 20분</div>
+            <div class="calendar-title">2027년 1월 9일 토요일 <br> 오후 6시시</div>
 
             <div class="calendar-weekdays">
                 <div>일</div>
@@ -915,43 +1012,50 @@
             <br>
 
             <div class="calendar-days">
-                <!-- 2026년 11월 1일은 일요일 시작 -->
-                <div class="calendar-day sunday">1</div>
+                <div class="calendar-day empty"></div>
+                <div class="calendar-day empty"></div>
+                <div class="calendar-day empty"></div>
+                <div class="calendar-day empty"></div>
+                <div class="calendar-day empty"></div>
+                <div class="calendar-day">1</div>
                 <div class="calendar-day">2</div>
-                <div class="calendar-day">3</div>
+
+                <div class="calendar-day sunday">3</div>
                 <div class="calendar-day">4</div>
                 <div class="calendar-day">5</div>
                 <div class="calendar-day">6</div>
-                <div class="calendar-day selected">7</div>
+                <div class="calendar-day">7</div>
+                <div class="calendar-day">8</div>
+                <div class="calendar-day selected">9</div>
 
-                <div class="calendar-day sunday">8</div>
-                <div class="calendar-day">9</div>
-                <div class="calendar-day">10</div>
+                <div class="calendar-day sunday">10</div>
                 <div class="calendar-day">11</div>
                 <div class="calendar-day">12</div>
                 <div class="calendar-day">13</div>
                 <div class="calendar-day">14</div>
-
-                <div class="calendar-day sunday">15</div>
+                <div class="calendar-day">15</div>
                 <div class="calendar-day">16</div>
-                <div class="calendar-day">17</div>
+
+                <div class="calendar-day sunday">17</div>
                 <div class="calendar-day">18</div>
                 <div class="calendar-day">19</div>
                 <div class="calendar-day">20</div>
                 <div class="calendar-day">21</div>
-
-                <div class="calendar-day sunday">22</div>
+                <div class="calendar-day">22</div>
                 <div class="calendar-day">23</div>
-                <div class="calendar-day">24</div>
+
+                <div class="calendar-day sunday">24</div>
                 <div class="calendar-day">25</div>
                 <div class="calendar-day">26</div>
                 <div class="calendar-day">27</div>
                 <div class="calendar-day">28</div>
-
-                <div class="calendar-day sunday">29</div>
+                <div class="calendar-day">29</div>
                 <div class="calendar-day">30</div>
 
+                <div class="calendar-day sunday">31</div>
+
                 <!-- 빈칸 (정렬 유지용) -->
+                <div class="calendar-day empty"></div>
                 <div class="calendar-day empty"></div>
                 <div class="calendar-day empty"></div>
                 <div class="calendar-day empty"></div>
@@ -987,15 +1091,15 @@
             <div class="info-grid">
                 <div class="info-row">
                     <div class="info-label">장소</div>
-                    <div class="info-value">예식장 이름 ○층 ○○홀</div>
+                    <div class="info-value">강남 노보텔 엠버서더 2층 샴페인홀</div>
                 </div>
                 <div class="info-row">
                     <div class="info-label">주소</div>
-                    <div class="info-value">예식장 주소를 입력하세요</div>
+                    <div class="info-value">강남구 봉은사로 130, 06124, 서울, 서울특별시, 대한민국</div>
                 </div>
                 <div class="info-row">
                     <div class="info-label">연락처</div>
-                    <div class="info-value">신랑 신랑이름 010-0000-0000<br>신부 신부이름 010-0000-0000</div>
+                    <div class="info-value">신랑 임희주 010-7707-0292<br>신부 이수빈 010-9594-1989</div>
                 </div>
             </div>
         </div>
