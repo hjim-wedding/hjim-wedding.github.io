@@ -6,8 +6,8 @@
     <meta name="description" content="임희주 ♥ 이수빈의 결혼식에 초대합니다">
     <meta property="og:title" content="임희주 ❤️ 이수빈">
     <meta property="og:description" content="2027년 1월 9일 토요일 오후 6시">
-    <meta property="og:image" content="https://hjim-wedding.github.io/assets/main.jpg">
-    <meta property="og:url" content="https://hjim-wedding.github.io/">
+    <meta property="og:image" content="https://wedding0109.github.io/assets/main.jpg">
+    <meta property="og:url" content="https://wedding0109.github.io/">
     <meta property="og:type" content="website">
     <title>임희주 ❤️ 이수빈</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -660,7 +660,7 @@
             letter-spacing: 0.04em;
             opacity: 0;
             transition: all 0.3s;
-            z-index: 1000;
+            z-index: 1200; /* 참석 여부 팝업(1100) 위에서도 보이도록 */
             box-shadow: 0 4px 20px rgba(0,0,0,0.15);
             white-space: nowrap;
         }
@@ -683,6 +683,7 @@
             .info-section,
             .map-section,
             .gallery-section,
+            .rsvp-section,
             .account-section {
                 padding: 56px 26px;
             }
@@ -965,6 +966,393 @@
             }
         }
 
+        /* 참석 여부 회신 섹션 */
+        .rsvp-section {
+            padding: 70px 40px;
+            text-align: center;
+            background: transparent;
+        }
+
+        .rsvp-notice {
+            margin-top: -24px;
+            font-size: 0.9rem;
+            color: var(--secondary);
+            line-height: 2.1;
+            letter-spacing: 0.02em;
+        }
+
+        .rsvp-open-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 30px;
+            background: #F3EADF;
+            color: var(--primary);
+            border: none;
+            padding: 15px 36px;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .rsvp-open-btn:hover {
+            background: #EADDCC;
+        }
+
+        .rsvp-open-btn svg,
+        .rsvp-primary-btn svg {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+        }
+
+        /* 참석 여부 팝업 (안내 / 입력 폼) */
+        .rsvp-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 1100;
+            background: rgba(30, 27, 24, 0.62);
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            padding: 72px 20px 32px;
+        }
+
+        /* 닫기 버튼(카드 위)이 오른쪽 위 배경음악 버튼과 겹치지 않도록 */
+        #rsvp-intro {
+            padding-top: 110px;
+        }
+
+        .rsvp-modal.active {
+            display: flex;
+            animation: rsvp-fade 0.25s ease;
+        }
+
+        @keyframes rsvp-fade {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .rsvp-modal [hidden] {
+            display: none !important;
+        }
+
+        .rsvp-dialog {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin: auto;
+        }
+
+        .rsvp-close {
+            position: absolute;
+            top: -48px;
+            right: 4px;
+            width: 40px;
+            height: 40px;
+            background: none;
+            border: none;
+            color: #FFFFFF;
+            font-size: 1.5rem;
+            line-height: 1;
+            cursor: pointer;
+        }
+
+        .rsvp-card {
+            background: #FFFFFF;
+            border-radius: 20px;
+            padding: 36px 28px 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.18);
+        }
+
+        .rsvp-title {
+            font-family: var(--font-body);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-align: center;
+            letter-spacing: 0.08em;
+            margin-bottom: 20px;
+        }
+
+        .rsvp-text {
+            font-size: 0.9rem;
+            color: var(--primary);
+            text-align: center;
+            line-height: 1.9;
+            word-break: keep-all;
+        }
+
+        .rsvp-summary {
+            list-style: none;
+            margin: 26px 0 28px;
+            padding-top: 24px;
+            border-top: 1px dashed #CFC6BA;
+        }
+
+        .rsvp-summary li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+            color: var(--primary);
+            line-height: 1.6;
+            padding: 3px 4px;
+        }
+
+        .rsvp-summary svg {
+            width: 17px;
+            height: 17px;
+            flex-shrink: 0;
+            color: var(--accent);
+        }
+
+        .rsvp-primary-btn {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: #F3EADF;
+            color: var(--primary);
+            border: none;
+            border-radius: 14px;
+            padding: 17px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .rsvp-primary-btn:hover {
+            background: #EADDCC;
+        }
+
+        .rsvp-form-head {
+            text-align: center;
+            padding-bottom: 24px;
+            margin-bottom: 26px;
+            border-bottom: 1px solid #F0EBE4;
+        }
+
+        .rsvp-dday {
+            font-family: var(--font-serif);
+            font-size: 0.95rem;
+            color: var(--accent);
+            letter-spacing: 0.12em;
+            font-variant-numeric: lining-nums;
+        }
+
+        .rsvp-date {
+            font-size: 1.05rem;
+            color: var(--primary);
+            margin-top: 2px;
+        }
+
+        .rsvp-venue {
+            font-size: 0.88rem;
+            color: var(--secondary);
+        }
+
+        .rsvp-map-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 16px;
+            padding: 9px 26px;
+            background: #FFFFFF;
+            border: 1px solid var(--divider);
+            border-radius: 999px;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        .rsvp-map-btn svg {
+            width: 15px;
+            height: 15px;
+            color: var(--secondary);
+        }
+
+        .rsvp-field {
+            margin-bottom: 24px;
+        }
+
+        .rsvp-label {
+            display: block;
+            font-size: 0.92rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+            letter-spacing: 0.04em;
+        }
+
+        .rsvp-required {
+            color: #D94A4A;
+            margin-left: 2px;
+        }
+
+        .rsvp-hint {
+            font-size: 0.8rem;
+            color: var(--secondary);
+        }
+
+        .rsvp-input {
+            width: 100%;
+            padding: 13px 16px;
+            border: 1px solid var(--divider);
+            border-radius: 12px;
+            background: #FFFFFF;
+            font-family: var(--font-body);
+            font-size: 16px; /* 16px 미만이면 iOS 가 입력 시 화면을 확대한다 */
+            color: var(--primary);
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .rsvp-input:focus {
+            border-color: var(--accent);
+        }
+
+        .rsvp-input::placeholder {
+            color: #B9B0A6;
+        }
+
+        textarea.rsvp-input {
+            resize: vertical;
+            line-height: 1.7;
+        }
+
+        .rsvp-choices {
+            display: grid;
+            grid-template-columns: repeat(var(--cols, 2), 1fr);
+            gap: 10px;
+        }
+
+        .rsvp-choice input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .rsvp-choice span {
+            display: block;
+            padding: 13px 0;
+            text-align: center;
+            border: 1px solid var(--divider);
+            border-radius: 12px;
+            font-size: 0.95rem;
+            color: var(--primary);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .rsvp-choice input:checked + span {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #FFFFFF;
+        }
+
+        .rsvp-choice input:focus-visible + span {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        .rsvp-stepper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid var(--divider);
+            border-radius: 12px;
+            padding: 4px;
+        }
+
+        .rsvp-stepper button {
+            width: 44px;
+            height: 40px;
+            background: none;
+            border: none;
+            font-size: 1.3rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        .rsvp-stepper button:disabled {
+            color: var(--divider);
+            cursor: default;
+        }
+
+        .rsvp-stepper output {
+            font-size: 1rem;
+            color: var(--primary);
+        }
+
+        /* 봇 차단용 허니팟 입력칸 (화면 밖으로 숨김) */
+        .rsvp-hp {
+            position: absolute;
+            left: -9999px;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+        }
+
+        .rsvp-privacy {
+            font-size: 0.75rem;
+            color: var(--secondary);
+            line-height: 1.7;
+            text-align: center;
+            margin: -4px 0 16px;
+            word-break: keep-all;
+        }
+
+        .rsvp-submit {
+            width: 100%;
+            padding: 17px;
+            background: var(--accent);
+            color: #FFFFFF;
+            border: none;
+            border-radius: 14px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .rsvp-submit:disabled {
+            background: #DCCFBE;
+            cursor: default;
+        }
+
+        .rsvp-done {
+            padding: 20px 0 6px;
+        }
+
+        .rsvp-back-btn {
+            width: 100%;
+            margin-top: 14px;
+            padding: 16px;
+            background: #FFFFFF;
+            border: none;
+            border-radius: 20px;
+            font-family: var(--font-body);
+            font-size: 0.92rem;
+            color: var(--primary);
+            letter-spacing: 0.06em;
+            cursor: pointer;
+        }
+
+        @media (max-width: 480px) {
+            .rsvp-card {
+                padding: 30px 22px 24px;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -1241,6 +1629,18 @@
 
         <div class="divider-line scroll-reveal"></div>
 
+        <!-- 참석 여부 회신 -->
+        <div class="rsvp-section scroll-reveal">
+            <div class="section-title">참석 여부 회신</div>
+            <p class="rsvp-notice">참석 여부를 미리 알려주시면<br>더욱 정성껏 준비하겠습니다.</p>
+            <button type="button" class="rsvp-open-btn" onclick="openRsvpIntro()">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4.5L5 21V4a1 1 0 0 1 1-1z"/></svg>
+                참석여부 회신
+            </button>
+        </div>
+
+        <div class="divider-line scroll-reveal"></div>
+
         <!-- 계좌 정보 토글 -->
         <div class="account-section scroll-reveal">
             <div class="section-title">마음 전하실 곳</div>
@@ -1392,6 +1792,124 @@
             console.log('Kakao SDK 초기화:', Kakao.isInitialized());
         }
 
+        // 참석 여부 회신 (RSVP)
+        // 응답은 신랑·신부 구글 드라이브의 스프레드시트에만 기록된다 (설정 방법: rsvp/README.md)
+        const RSVP_ENDPOINT = ''; // TODO: Apps Script 웹 앱 URL (https://script.google.com/macros/s/.../exec)
+        const RSVP_WEDDING_DATE = '2027-01-09';
+        const RSVP_MAX_GUESTS = 10;
+        let rsvpGuests = 1;
+
+        function openRsvpModal(id) {
+            document.querySelectorAll('.rsvp-modal.active').forEach(m => m.classList.remove('active'));
+            const modal = document.getElementById(id);
+            modal.classList.add('active');
+            modal.scrollTop = 0;
+            document.body.style.overflow = 'hidden';
+        }
+
+        function openRsvpIntro() {
+            openRsvpModal('rsvp-intro');
+        }
+
+        function openRsvpForm() {
+            // 이미 전송을 마친 상태라면 새 응답을 받을 수 있도록 폼을 비운다
+            if (!document.getElementById('rsvp-done').hidden) resetRsvpForm();
+            updateRsvpDday();
+            openRsvpModal('rsvp-form-modal');
+        }
+
+        function closeRsvp() {
+            const active = document.querySelectorAll('.rsvp-modal.active');
+            if (!active.length) return;
+            active.forEach(m => m.classList.remove('active'));
+            document.body.style.overflow = '';
+        }
+
+        function goToMapFromRsvp() {
+            closeRsvp();
+            document.querySelector('.map-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function updateRsvpDday() {
+            // 한국시간 기준 날짜끼리 비교 (둘 다 UTC 자정으로 파싱됨)
+            const today = new Date(new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Seoul' }));
+            const days = Math.round((new Date(RSVP_WEDDING_DATE) - today) / 86400000);
+            document.getElementById('rsvp-dday').textContent =
+                days > 0 ? `D - ${days}` : days === 0 ? 'D - DAY' : `D + ${-days}`;
+        }
+
+        function changeRsvpGuests(delta) {
+            rsvpGuests = Math.min(Math.max(rsvpGuests + delta, 1), RSVP_MAX_GUESTS);
+            document.getElementById('rsvp-guests').textContent = `${rsvpGuests}명`;
+            document.getElementById('rsvp-guests-minus').disabled = rsvpGuests <= 1;
+            document.getElementById('rsvp-guests-plus').disabled = rsvpGuests >= RSVP_MAX_GUESTS;
+        }
+
+        function updateRsvpState() {
+            const form = document.getElementById('rsvp-form');
+            const data = new FormData(form);
+            const attendance = data.get('attendance');
+            document.getElementById('rsvp-guests-field').hidden = attendance !== '참석';
+            document.getElementById('rsvp-submit').disabled = !(data.get('name') || '').trim() || !attendance;
+        }
+
+        function resetRsvpForm() {
+            document.getElementById('rsvp-form').reset();
+            document.getElementById('rsvp-form').hidden = false;
+            document.getElementById('rsvp-done').hidden = true;
+            rsvpGuests = 1;
+            changeRsvpGuests(0);
+            updateRsvpState();
+        }
+
+        async function submitRsvp(e) {
+            e.preventDefault();
+            const form = e.target;
+            const submitBtn = document.getElementById('rsvp-submit');
+            if (submitBtn.disabled) return;
+
+            const data = new FormData(form);
+            const attendance = data.get('attendance');
+            const payload = {
+                name: (data.get('name') || '').trim(),
+                side: data.get('side') || '',
+                attendance: attendance,
+                guests: attendance === '참석' ? rsvpGuests : '',
+                message: (data.get('message') || '').trim(),
+                website: data.get('website') || ''
+            };
+
+            if (!RSVP_ENDPOINT) {
+                showToast('참석 여부 회신 준비 중입니다');
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = '전송 중...';
+            try {
+                // Content-Type 을 지정하지 않으면 text/plain 으로 전송되어 CORS 사전 요청(preflight) 없이 Apps Script 로 보낼 수 있다
+                const res = await fetch(RSVP_ENDPOINT, { method: 'POST', body: JSON.stringify(payload) });
+                const result = await res.json();
+                if (!result.ok) throw new Error(result.error || 'rsvp failed');
+                form.hidden = true;
+                document.getElementById('rsvp-done').hidden = false;
+            } catch (error) {
+                console.error('참석 여부 전송 에러:', error);
+                showToast('전송에 실패했습니다. 잠시 후 다시 시도해주세요');
+            } finally {
+                submitBtn.textContent = '참석 여부 전송하기';
+                updateRsvpState();
+            }
+        }
+
+        function initRsvp() {
+            const form = document.getElementById('rsvp-form');
+            form.addEventListener('input', updateRsvpState);
+            form.addEventListener('change', updateRsvpState);
+            form.addEventListener('submit', submitRsvp);
+            changeRsvpGuests(0);
+        }
+
         // 토글 함수
         function toggleAccount(header) {
             const box = header.parentElement;
@@ -1432,18 +1950,18 @@
                     content: {
                         title: '임희주 ♥ 이수빈 결혼합니다',
                         description: '2027.01.09 토요일 오후 6시\n강남 노보텔 엠버서더 2층 샴페인홀',
-                        imageUrl: 'https://hjim-wedding.github.io/assets/main.jpg',
+                        imageUrl: 'https://wedding0109.github.io/assets/main.jpg',
                         link: {
-                            mobileWebUrl: 'https://hjim-wedding.github.io/',
-                            webUrl: 'https://hjim-wedding.github.io/'
+                            mobileWebUrl: 'https://wedding0109.github.io/',
+                            webUrl: 'https://wedding0109.github.io/'
                         }
                     },
                     buttons: [
                         {
                             title: '청첩장 보기',
                             link: {
-                                mobileWebUrl: 'https://hjim-wedding.github.io/',
-                                webUrl: 'https://hjim-wedding.github.io/'
+                                mobileWebUrl: 'https://wedding0109.github.io/',
+                                webUrl: 'https://wedding0109.github.io/'
                             }
                         }
                     ]
@@ -1620,7 +2138,12 @@
         }
 
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeGalleryModal();
+            if (e.key === 'Escape') {
+                closeGalleryModal();
+                closeRsvp();
+            }
+            // 갤러리가 열려 있을 때만 (폼 입력 중 방향키와 겹치지 않도록)
+            if (!document.getElementById('gallery-modal').classList.contains('active')) return;
             if (e.key === 'ArrowRight') changeGalleryPhoto(1);
             if (e.key === 'ArrowLeft') changeGalleryPhoto(-1);
         });
@@ -1628,6 +2151,7 @@
         let touchStartX = 0;
         document.addEventListener('DOMContentLoaded', function() {
             initGalleryPreview();
+            initRsvp();
             const modal = document.getElementById('gallery-modal');
             modal.addEventListener('touchstart', function(e) {
                 touchStartX = e.touches[0].clientX;
@@ -1645,6 +2169,109 @@
         <button class="gallery-modal-prev" onclick="changeGalleryPhoto(-1)">&#8249;</button>
         <img id="gallery-modal-img" src="" alt="사진">
         <button class="gallery-modal-next" onclick="changeGalleryPhoto(1)">&#8250;</button>
+    </div>
+
+    <!-- 참석 여부 안내 팝업 -->
+    <div id="rsvp-intro" class="rsvp-modal" role="dialog" aria-modal="true" aria-labelledby="rsvp-intro-title" onclick="if(event.target===this)closeRsvp()">
+        <div class="rsvp-dialog">
+            <button type="button" class="rsvp-close" aria-label="닫기" onclick="closeRsvp()">&#10005;</button>
+            <div class="rsvp-card">
+                <div class="rsvp-title" id="rsvp-intro-title">참석 여부 전달 안내</div>
+                <p class="rsvp-text">
+                    특별한 날 축하의 마음으로<br>
+                    참석해주시는 모든 분들을<br>
+                    한 분 한 분 더욱 귀하게 모실 수 있도록,<br>
+                    아래 버튼을 눌러 신랑·신부에게<br>
+                    참석 여부를 전달 부탁드립니다.
+                </p>
+                <ul class="rsvp-summary">
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><circle cx="16.5" cy="9" r="2.8"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><path d="M15.5 14.2c3.3-.3 6 1.9 6 5.8"/></svg>
+                        신랑 임희주 &amp; 신부 이수빈
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>
+                        2027년 1월 9일 토요일, 오후 6시
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+                        강남 노보텔 엠버서더 2층 샴페인홀
+                    </li>
+                </ul>
+                <button type="button" class="rsvp-primary-btn" onclick="openRsvpForm()">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4.5L5 21V4a1 1 0 0 1 1-1z"/></svg>
+                    참석여부 전달하기
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 참석 여부 입력 팝업 -->
+    <div id="rsvp-form-modal" class="rsvp-modal" role="dialog" aria-modal="true" aria-labelledby="rsvp-form-date" onclick="if(event.target===this)closeRsvp()">
+        <div class="rsvp-dialog">
+            <div class="rsvp-card">
+                <div class="rsvp-form-head">
+                    <div class="rsvp-dday" id="rsvp-dday"></div>
+                    <div class="rsvp-date" id="rsvp-form-date">2027. 1. 9 (토) 오후 6시</div>
+                    <div class="rsvp-venue">강남 노보텔 엠버서더 · 2층 샴페인홀</div>
+                    <button type="button" class="rsvp-map-btn" onclick="goToMapFromRsvp()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+                        오시는 길
+                    </button>
+                </div>
+
+                <form id="rsvp-form" novalidate>
+                    <div class="rsvp-field">
+                        <label class="rsvp-label" for="rsvp-name">이름<span class="rsvp-required">*</span></label>
+                        <input class="rsvp-input" id="rsvp-name" name="name" type="text" maxlength="30" autocomplete="name" required>
+                    </div>
+
+                    <div class="rsvp-field">
+                        <div class="rsvp-label" id="rsvp-side-label">소속</div>
+                        <div class="rsvp-choices" role="radiogroup" aria-labelledby="rsvp-side-label">
+                            <label class="rsvp-choice"><input type="radio" name="side" value="신랑측"><span>신랑측</span></label>
+                            <label class="rsvp-choice"><input type="radio" name="side" value="신부측"><span>신부측</span></label>
+                        </div>
+                    </div>
+
+                    <div class="rsvp-field">
+                        <div class="rsvp-label" id="rsvp-attendance-label">참석 여부<span class="rsvp-required">*</span></div>
+                        <div class="rsvp-choices" style="--cols: 3" role="radiogroup" aria-labelledby="rsvp-attendance-label">
+                            <label class="rsvp-choice"><input type="radio" name="attendance" value="참석" required><span>참석</span></label>
+                            <label class="rsvp-choice"><input type="radio" name="attendance" value="불참"><span>불참</span></label>
+                            <label class="rsvp-choice"><input type="radio" name="attendance" value="미정"><span>미정</span></label>
+                        </div>
+                    </div>
+
+                    <div class="rsvp-field" id="rsvp-guests-field" hidden>
+                        <div class="rsvp-label" id="rsvp-guests-label">참석 인원 <span class="rsvp-hint">(본인 포함)</span></div>
+                        <div class="rsvp-stepper" aria-labelledby="rsvp-guests-label">
+                            <button type="button" id="rsvp-guests-minus" aria-label="인원 줄이기" onclick="changeRsvpGuests(-1)">&minus;</button>
+                            <output id="rsvp-guests" aria-live="polite">1명</output>
+                            <button type="button" id="rsvp-guests-plus" aria-label="인원 늘리기" onclick="changeRsvpGuests(1)">+</button>
+                        </div>
+                    </div>
+
+                    <div class="rsvp-field">
+                        <label class="rsvp-label" for="rsvp-message">축하 메시지</label>
+                        <textarea class="rsvp-input" id="rsvp-message" name="message" rows="3" maxlength="500" placeholder="신랑 신부에게 전할 축하 메시지를 남겨주세요"></textarea>
+                    </div>
+
+                    <!-- 봇 차단용: 사람에게는 보이지 않는 칸이 채워져 있으면 저장하지 않는다 -->
+                    <input type="text" name="website" class="rsvp-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+                    <p class="rsvp-privacy">입력하신 정보는 신랑·신부만 확인할 수 있으며,<br>참석 인원 파악에만 사용하고 결혼식 후 파기합니다.</p>
+
+                    <button type="submit" class="rsvp-submit" id="rsvp-submit" disabled>참석 여부 전송하기</button>
+                </form>
+
+                <div class="rsvp-done" id="rsvp-done" hidden>
+                    <div class="rsvp-title">전달되었습니다</div>
+                    <p class="rsvp-text">소중한 회신 감사합니다.<br>보내주신 마음 잘 간직하겠습니다.</p>
+                </div>
+            </div>
+            <button type="button" class="rsvp-back-btn" onclick="closeRsvp()">청첩장 보러가기 &rarr;</button>
+        </div>
     </div>
 </body>
 </html>
