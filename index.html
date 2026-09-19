@@ -143,8 +143,8 @@
             margin: 0 auto;
         }
 
-        /* 예식 정보 아래 섹션 사이 구분선은 절반 길이 */
-        .info-section ~ .divider-line {
+        /* 주소(예식 정보)와 갤러리 사이 구분선만 절반 길이 */
+        .info-section + .divider-line {
             height: 28px;
         }
 
@@ -208,7 +208,7 @@
         }
 
         .map-section {
-            padding: 35px 40px;
+            padding: 70px 40px;
             background: transparent;
         }
 
@@ -402,7 +402,7 @@
         }
 
         .gallery-section {
-            padding: 35px 40px;
+            padding: 35px 40px 70px;
             background: transparent;
         }
 
@@ -470,7 +470,7 @@
 
         /* 계좌 정보 섹션 */
         .account-section {
-            padding: 35px 40px;
+            padding: 70px 40px;
             background: transparent;
         }
 
@@ -603,7 +603,7 @@
         }
 
         .share-section {
-            padding: 30px 40px 40px;
+            padding: 60px 40px 40px;
             text-align: center;
             background: transparent;
         }
@@ -674,7 +674,10 @@
                 font-size: 1.95rem;
             }
 
-            .invitation-message {
+            .invitation-message,
+            .map-section,
+            .rsvp-section,
+            .account-section {
                 padding: 56px 26px;
             }
 
@@ -682,15 +685,12 @@
                 padding: 56px 26px 28px;
             }
 
-            .map-section,
-            .gallery-section,
-            .rsvp-section,
-            .account-section {
-                padding: 28px 26px;
+            .gallery-section {
+                padding: 28px 26px 56px;
             }
 
             .share-section {
-                padding: 25px 26px 36px;
+                padding: 50px 26px 36px;
             }
 
             .share-btn {
@@ -969,7 +969,7 @@
 
         /* 참석 여부 회신 섹션 */
         .rsvp-section {
-            padding: 35px 40px;
+            padding: 70px 40px;
             text-align: center;
             background: transparent;
         }
@@ -1349,11 +1349,6 @@
         }
 
         @media (max-width: 480px) {
-            /* .rsvp-section 기본 규칙이 위쪽 모바일 규칙보다 뒤에 있어서 여기서 다시 지정 */
-            .rsvp-section {
-                padding: 28px 26px;
-            }
-
             .rsvp-card {
                 padding: 30px 22px 24px;
             }
