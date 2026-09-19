@@ -13,7 +13,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Gowun+Batang:wght@400;700&family=Noto+Serif+KR:wght@200;300;400;500&display=swap" rel="stylesheet">
-    <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.2/kakao.min.js"></script>
     <style>
         :root {
             --primary: #2E2A26;
@@ -621,15 +620,6 @@
 
         .share-btn:hover {
             background: var(--accent);
-        }
-
-        .share-btn.kakao {
-            background: #FEE500;
-            color: #3C1E1E;
-        }
-
-        .share-btn.kakao:hover {
-            background: #FDD835;
         }
 
         .footer {
@@ -1717,16 +1707,9 @@
         </div>
 
         <div class="share-section scroll-reveal">
-            <button class="share-btn kakao" id="kakao-share-btn">
-                카카오톡 공유
-            </button>
             <button class="share-btn" onclick="shareInvitation()">
                 링크 공유
             </button>
-        </div>
-
-        <div class="footer">            
-            <div class="footer-text">Made by Heeju Im</div>
         </div>
     </div>
 
@@ -1780,19 +1763,12 @@
             playBgm();
         }, { once: true });
 
-        // 카카오 SDK 초기화
-        const KAKAO_API_KEY = 'YOUR_KAKAO_JAVASCRIPT_KEY'; // TODO: 카카오 디벨로퍼스 JavaScript 키로 교체!
-
-        if (typeof Kakao !== 'undefined' && !Kakao.isInitialized()) {
-            Kakao.init(KAKAO_API_KEY);
-            console.log('Kakao SDK 초기화:', Kakao.isInitialized());
-        }
-
         // 참석 여부 회신 (RSVP)
         // 응답은 신랑·신부 구글 드라이브의 스프레드시트에만 기록된다 (설정 방법: rsvp/README.md)
         const RSVP_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxzizvd4VnL6VlHPE0ORbFJz4qm7M292GsK8c72VqzhQs_VDb2BSe-0YRdqsD-wEyDb-g/exec'; // Apps Script 웹 앱 URL
         const RSVP_WEDDING_DATE = '2027-01-09';
         const RSVP_MAX_GUESTS = 10;
+        const RSVP_SENT_KEY = 'rsvpSent';
         let rsvpGuests = 1;
 
         function openRsvpModal(id) {
@@ -1805,6 +1781,13 @@
 
         function openRsvpIntro() {
             openRsvpModal('rsvp-intro');
+        }
+
+        // 접속하자마자 안내 팝업을 띄운다 (이미 회신한 브라우저는 제외)
+        function openRsvpIntroOnLoad() {
+            let sent = false;
+            try { sent = localStorage.getItem(RSVP_SENT_KEY) === '1'; } catch (e) {}
+            if (!sent) openRsvpIntro();
         }
 
         function openRsvpForm() {
@@ -1889,6 +1872,8 @@
                 if (!result.ok) throw new Error(result.error || 'rsvp failed');
                 form.hidden = true;
                 document.getElementById('rsvp-done').hidden = false;
+                // 회신을 마친 브라우저에서는 다음 접속 때 안내 팝업을 자동으로 띄우지 않는다
+                try { localStorage.setItem(RSVP_SENT_KEY, '1'); } catch (e) {}
             } catch (error) {
                 console.error('참석 여부 전송 에러:', error);
                 showToast('전송에 실패했습니다. 잠시 후 다시 시도해주세요');
@@ -1926,46 +1911,6 @@
 
         document.querySelectorAll('.transport-tab').forEach(tab => {
             tab.addEventListener('click', () => switchTransport(tab.dataset.transport));
-        });
-
-        // 카카오톡 공유
-        document.getElementById('kakao-share-btn').addEventListener('click', function() {
-            if (typeof Kakao === 'undefined') {
-                showToast('카카오 SDK 로드 실패');
-                return;
-            }
-
-            if (!Kakao.isInitialized()) {
-                showToast('카카오 SDK 초기화 안됨');
-                return;
-            }
-
-            try {
-                Kakao.Share.sendDefault({
-                    objectType: 'feed',
-                    content: {
-                        title: '임희주 ♥ 이수빈 결혼합니다',
-                        description: '2027.01.09 토요일 오후 6시\n강남 노보텔 엠버서더 2층 샴페인홀',
-                        imageUrl: 'https://wedding0109.github.io/assets/main.jpg',
-                        link: {
-                            mobileWebUrl: 'https://wedding0109.github.io/',
-                            webUrl: 'https://wedding0109.github.io/'
-                        }
-                    },
-                    buttons: [
-                        {
-                            title: '청첩장 보기',
-                            link: {
-                                mobileWebUrl: 'https://wedding0109.github.io/',
-                                webUrl: 'https://wedding0109.github.io/'
-                            }
-                        }
-                    ]
-                });
-            } catch (error) {
-                console.error('카카오톡 공유 에러:', error);
-                showToast('공유 실패');
-            }
         });
 
         // 계좌번호 복사
@@ -2148,6 +2093,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             initGalleryPreview();
             initRsvp();
+            openRsvpIntroOnLoad();
             const modal = document.getElementById('gallery-modal');
             modal.addEventListener('touchstart', function(e) {
                 touchStartX = e.touches[0].clientX;
